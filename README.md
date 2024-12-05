@@ -19,5 +19,27 @@ npm install --save-dev @vitejs/plugin-react
 composer require inertiajs/inertia-laravel
 ```
 - Create app.blade.php including vite & Inertia directives/scripts
-- Run ```php artisan inertia:middleware``` && follow remaining steps as described in documentation
+- Run 
+```
+php artisan inertia:middleware
+``` 
+&& follow remaining steps as described in documentation
+- Set up Inertia front-end with React
+```
+npm install @inertiajs/react
+```
+- Update resources\js\app.jsx as follows:
+<pre>
+import { createInertiaApp } from '@inertiajs/react'
+import { createRoot } from 'react-dom/client'
 
+createInertiaApp({
+  resolve: name => {
+    const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true })
+    return pages[`./Pages/${name}.jsx`]
+  },
+  setup({ el, App, props }) {
+    createRoot(el).render(<App {...props} />)
+  },
+})
+</pre>
