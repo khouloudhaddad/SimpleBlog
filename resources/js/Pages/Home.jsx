@@ -1,7 +1,8 @@
-export default function Home(){
+export default function Home({ name }){
     return (
         <>
-            <h1>Hello there !</h1>
+            <h1 className="heading">Home Page</h1>
+            <p className="text-center">Hello {name}</p>
         </>
     )
 }

@@ -43,3 +43,6 @@ createInertiaApp({
   },
 })
 </pre>
+
+- Install [Tailwind](https://tailwindcss.com/docs/guides/laravel) 
+
